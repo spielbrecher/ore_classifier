@@ -1,0 +1,11 @@
+services:
+  ore-classifier:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/app/models
+      - ./dataset:/app/dataset:ro
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+    restart: unless-stopped
